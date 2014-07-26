@@ -14,11 +14,9 @@
 @interface AQInput()
 
 @property (nonatomic) double sampleRate;
-@property (nonatomic) AudioStreamBasicDescription newASBD;
+@property (nonatomic) AudioQueueInputCallback aQIC;
 
 - (BOOL)startAudioSession;
-- (AudioStreamBasicDescription)defineAudioStreamBasicDescription;
-//- (AudioQueueInputCallback)defineMyCallback;
 
 @end
 
@@ -34,10 +32,20 @@
         NSLog(@"Cloud not start AVAudioSession.");
     }
     
-    //Defines AudioStreamBasicDescription
-    self.newASBD = [self defineAudioStreamBasicDescription];
-    //AudioQueueInputCallback myCallback = [self defineMyCallback];
-    //AudioQueueNewInput(newASBD, <#AudioQueueInputCallback inCallbackProc#>, nil, <#CFRunLoopRef inCallbackRunLoop#>, <#CFStringRef inCallbackRunLoopMode#>, <#UInt32 inFlags#>, <#AudioQueueRef *outAQ#>);
+    //TODO: Set these values dynamically.
+    //Sets values for AudioStreamBasicDescription.
+    AudioStreamBasicDescription aSBD = {0};
+    aSBD.mSampleRate = (Float64)self.sampleRate;
+    aSBD.mFormatID = kAudioFormatLinearPCM;
+    aSBD.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
+    aSBD.mBytesPerPacket = (aSBD.mBitsPerChannel / 8) * aSBD.mChannelsPerFrame;
+    aSBD.mFramesPerPacket = 1;
+    aSBD.mBytesPerFrame = 2;
+    aSBD.mChannelsPerFrame = 1;
+    aSBD.mBitsPerChannel = 16;
+    aSBD.mReserved = 0;
+    
+    //AudioQueueNewInput(aSBD, aQIC , nil, <#CFRunLoopRef inCallbackRunLoop#>, <#CFStringRef inCallbackRunLoopMode#>, <#UInt32 inFlags#>, <#AudioQueueRef *outAQ#>);
     
     return retVal;
     
@@ -79,24 +87,5 @@
     self.sampleRate = audioSession.sampleRate;
     return YES;
 }
-
-//TODO: Set these values dynamically.
-//Sets values for AudioStreamBasicDescription
-- (AudioStreamBasicDescription)defineAudioStreamBasicDescription{
-    AudioStreamBasicDescription aSBD = {0};
-    aSBD.mSampleRate = (Float64)self.sampleRate;
-    aSBD.mFormatID = kAudioFormatLinearPCM;
-    aSBD.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
-    aSBD.mBytesPerPacket = (aSBD.mBitsPerChannel / 8) * aSBD.mChannelsPerFrame;
-    aSBD.mFramesPerPacket = 1;
-    aSBD.mBytesPerFrame = 2;
-    aSBD.mChannelsPerFrame = 1;
-    aSBD.mBitsPerChannel = 16;
-    aSBD.mReserved = 0;
-    return aSBD;
-}
-//- (AudioQueueInputCallback)defineMyCallback{
-//
-//}
 
 @end
