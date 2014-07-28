@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D2853422198417BF002BCC21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25068D41982D7A500D354B1 /* Main.storyboard */; };
-		D28534371984180A002BCC21 /* AQInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D28534361984180A002BCC21 /* AQInput.m */; };
+		D28534371984180A002BCC21 /* AQInput.mm in Sources */ = {isa = PBXBuildFile; fileRef = D28534361984180A002BCC21 /* AQInput.mm */; };
 		D285343D19841A13002BCC21 /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = D285343C19841A13002BCC21 /* AudioController.m */; };
 		D2A672D91982C823006B3C32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A672D81982C823006B3C32 /* main.m */; };
 		D2A672DC1982C823006B3C32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A672DB1982C823006B3C32 /* AppDelegate.m */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		D25068D41982D7A500D354B1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D28534351984180A002BCC21 /* AQInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQInput.h; sourceTree = "<group>"; };
-		D28534361984180A002BCC21 /* AQInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQInput.m; sourceTree = "<group>"; };
+		D28534361984180A002BCC21 /* AQInput.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = AQInput.mm; sourceTree = "<group>"; };
 		D285343B19841A13002BCC21 /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
 		D285343C19841A13002BCC21 /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioController.m; sourceTree = "<group>"; };
 		D2A672D31982C823006B3C32 /* GuitarGauge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuitarGauge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +107,7 @@
 				D285343B19841A13002BCC21 /* AudioController.h */,
 				D285343C19841A13002BCC21 /* AudioController.m */,
 				D28534351984180A002BCC21 /* AQInput.h */,
-				D28534361984180A002BCC21 /* AQInput.m */,
+				D28534361984180A002BCC21 /* AQInput.mm */,
 				D2A672DA1982C823006B3C32 /* AppDelegate.h */,
 				D2A672DB1982C823006B3C32 /* AppDelegate.m */,
 				D2A672DD1982C823006B3C32 /* ViewController.h */,
@@ -260,7 +260,7 @@
 				D285343D19841A13002BCC21 /* AudioController.m in Sources */,
 				D2A672DF1982C823006B3C32 /* ViewController.m in Sources */,
 				D2A672DC1982C823006B3C32 /* AppDelegate.m in Sources */,
-				D28534371984180A002BCC21 /* AQInput.m in Sources */,
+				D28534371984180A002BCC21 /* AQInput.mm in Sources */,
 				D2A672D91982C823006B3C32 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

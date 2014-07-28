@@ -6,11 +6,37 @@
 //  Copyright (c) 2014 blackCloud. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#include <Foundation/Foundation.h>
+#include "AudioToolbox/AudioToolbox.h"
+#include "CoreAudio/CoreAudioTypes.h"
 
-@interface AQInput : NSObject
+#define kNumberRecordBuffers	3
 
-- (BOOL)startAQInput;
-
-
-@end
+class AQInput
+{
+public:
+    AQInput();
+    ~AQInput();
+    Boolean			IsRunning() const			{ return mIsRunning; }
+    Boolean         startAQInput;
+    UInt64			startTime;
+    
+private:
+    CFStringRef					mFileName;
+    AudioQueueRef				mQueue;
+    AudioQueueBufferRef			mBuffers[kNumberRecordBuffers];
+    AudioFileID					mRecordFile;
+    SInt64						mRecordPacket; // current packet number in record file
+    AudioStreamBasicDescription	mRecordFormat;
+    Boolean						mIsRunning;
+    
+    void			SetupAudioFormat();
+    int				ComputeRecordBufferSize(const AudioStreamBasicDescription *format, float seconds);
+    
+    static void MyInputBufferHandler(	void *								inUserData,
+                                     AudioQueueRef						inAQ,
+                                     AudioQueueBufferRef					inBuffer,
+                                     const AudioTimeStamp *				inStartTime,
+                                     UInt32								inNumPackets,
+                                     const AudioStreamPacketDescription*	inPacketDesc);
+};

@@ -10,6 +10,8 @@
 
 @interface AudioController : NSObject
 
+@property (nonatomic) double sampleRate;
+
 -(BOOL)startAudioController;
 
 @end
